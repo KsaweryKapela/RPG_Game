@@ -1,2 +1,3 @@
-# Sigma_Clicker
-My take on idle games using Python.
+# RPG_Game
+
+Creating simple web RPG_Game
