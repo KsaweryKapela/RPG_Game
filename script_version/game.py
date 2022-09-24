@@ -1,8 +1,15 @@
-from script_version.character_creation import MainCharacter
+from script_version.player_character import MainCharacter
 
 
-new_character = MainCharacter()
-new_character.create_character()
-print(new_character.attributes)
-new_character.spend_attribute_points()
-print(new_character.attributes)
+class Gameplay:
+    def __init__(self):
+        self.main_character = MainCharacter()
+
+    def start_game(self):
+        while True:
+            if self.main_character.create_character():
+                break
+
+
+gameplay = Gameplay()
+gameplay.start_game()
