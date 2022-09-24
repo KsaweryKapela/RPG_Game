@@ -1,4 +1,4 @@
-from backend.raw_scripts.character_creation import MainCharacter
+from script_version.character_creation import MainCharacter
 
 
 new_character = MainCharacter()
