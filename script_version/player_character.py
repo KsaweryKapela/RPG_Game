@@ -7,16 +7,15 @@ class MainCharacter(Entity):
 
     def __init__(self):
         super().__init__()
-        self.attribute_points = 0
 
     def create_character(self):
         self.level = 1
         self.attribute_points = 6
         self.name = input('What is your name? ').capitalize()
         self.race = input('Choose your race: orc, human or elf ').capitalize()
-        self.char_class = input('Choose your character class: mage, warrior or archer ').capitalize()
+        self.entity_class = input('Choose your character class: rogue, warrior or archer ').capitalize()
 
-        for bonus in self.classes.class_bonuses[self.char_class]:
+        for bonus in self.classes.class_bonuses[self.entity_class]:
             exec(bonus)
 
         for bonus in self.races.race_bonuses[self.race]:
@@ -52,20 +51,20 @@ class MainCharacter(Entity):
     def print_stats(self, first_time=False):
         if first_time:
             time.sleep(2)
-        print(f'You are {self.name}, {self.race}, the {self.char_class}, level {self.level}')
+        print(f'You are {self.name}, {self.race}, the {self.entity_class}, level {self.level}')
         if first_time:
             time.sleep(2)
             print('Your stats are:')
         print(f'Strength: {self.attributes["strength"]}, '
               f'Agility: {self.attributes["agility"]}, '
-              f'Wisdom: {self.attributes["wisdom"]}, ')
+              f'Cunning: {self.attributes["cunning"]}, ')
 
         if self.attribute_points > 0:
             print(f'You can still spend {self.attribute_points} attribute points')
 
         if first_time:
             time.sleep(2)
-        print(f'HP: {self.current_hp}/{self.hp} Mana: {self.current_mana}/{self.mana}')
+        print(f'HP: {self.current_hp}/{self.hp}')
 
         if first_time:
             time.sleep(1)
