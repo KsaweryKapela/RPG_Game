@@ -1,3 +1,6 @@
+from functions import print_and_pause
+
+
 class Races:
     def __init__(self):
         self.race_bonuses = {
@@ -85,4 +88,17 @@ class Entity:
         self.hit_chance = self.attributes['cunning']
         self.crit_chance = self.attributes['agility'] + self.attributes['strength'] / 2
         self.armor = self.attributes['agility']
-        self.luck = self.attributes['cunning'] / 4
+        self.luck = round(self.attributes['cunning'] / 4)
+
+    def print_advanced_stats(self):
+        print_and_pause(f'Strength: {self.attributes["strength"]}, '
+                        f'Agility: {self.attributes["agility"]}, '
+                        f'Cunning: {self.attributes["cunning"]}, ')
+        if self.attribute_points > 0:
+            print_and_pause(f'You can still spend {self.attribute_points} attribute points')
+        print_and_pause(f'HP: {self.current_hp}/{self.hp}')
+        print_and_pause(f'Damage: {self.min_dmg} - {self.max_dmg}')
+        print_and_pause(f'Armor: {self.armor}')
+        print_and_pause(f'Hit chance: {self.hit_chance} %')
+        print_and_pause(f'Crit chance: {self.crit_chance} %')
+        print_and_pause(f'Luck chance: {self.luck} %')

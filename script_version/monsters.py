@@ -1,7 +1,8 @@
 import time
-
 from entity import Entity
 from random import randint
+
+from functions import print_and_pause
 
 
 class NPC_Monster(Entity):
@@ -41,27 +42,9 @@ class NPC_Monster(Entity):
             self.attribute_points -= 1
         self.set_stats_from_attributes()
 
-    def print_stats(self):
-        print('\n')
-        print(f'You see {self.name}, level {self.level}, attack type: {self.attack_type}')
-        time.sleep(2)
-        print('His stats are:')
-        print(f'Strength: {self.attributes["strength"]}, '
-              f'Agility: {self.attributes["agility"]}, '
-              f'Cunning: {self.attributes["cunning"]}, ')
+    def print_stats(self, more_stats=False):
+        print_and_pause(f'You see {self.name}, level {self.level}, attack type: {self.attack_type}')
+        if more_stats:
+            print_and_pause('His stats are:')
+            self.print_advanced_stats()
 
-        time.sleep(2)
-        print(f'HP: {self.current_hp}/{self.hp}')
-
-        time.sleep(1)
-
-        print(f'Damage: {self.min_dmg} - {self.max_dmg}')
-        time.sleep(1)
-
-        print(f'Armor: {self.armor}')
-        time.sleep(1)
-
-        print(f'Hit chance: {self.hit_chance} %')
-        time.sleep(1)
-
-        print(f'Crit chance: {self.crit_chance} %')

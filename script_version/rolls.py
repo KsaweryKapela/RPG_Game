@@ -7,3 +7,7 @@ def k10():
 
 def k20():
     return randint(1, 20)
+
+
+def k100():
+    return randint(1, 100)
