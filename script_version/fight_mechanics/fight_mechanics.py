@@ -50,5 +50,3 @@ class Fight:
                 print(f'{attacked.name} has {round(attacked.current_hp)}/{attacked.hp} hp!')
         else:
             print(f'...misses!')
-
-
