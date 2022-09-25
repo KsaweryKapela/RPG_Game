@@ -1,7 +1,9 @@
 import time
 
-from script_version.monsters import NPC_Monster
-from script_version.player_character import MainCharacter
+from monsters import NPC_Monster
+from player_character import MainCharacter
+import os
+from fight_mechanics.fight_mechanics import Fight
 
 
 class Gameplay:
@@ -16,12 +18,27 @@ class Gameplay:
     def encounter_monster(self):
         monster = NPC_Monster(0, 'Warrior', 'Slave')
         monster.print_stats()
-        time.sleep(1)
-        print('ARE YOU READY TO FIGHT???')
+        time.sleep(2)
+        print('GET READY TO FIGHT')
+        fight = Fight(self.main_character, monster)
+        fight.turns()
+
+
 
     def gameplay(self):
+        os.system('CLS')
         self.start_game()
+        os.system('CLS')
         self.encounter_monster()
+
+    def test(self):
+        monster = NPC_Monster(0, 'Warrior', 'Slave')
+        main_character = MainCharacter()
+        main_character.name = 'Test Hero'
+        main_character.entity_class = 'Warrior'
+        main_character.set_stats_from_attributes()
+        fight = Fight(main_character, monster)
+        fight.turns()
 
 
 gameplay = Gameplay()

@@ -1,6 +1,6 @@
 import time
 
-from script_version.entity import Entity
+from entity import Entity
 
 
 class MainCharacter(Entity):
@@ -49,6 +49,7 @@ class MainCharacter(Entity):
             print('You have spent your attributes')
 
     def print_stats(self, first_time=False):
+        print('\n')
         if first_time:
             time.sleep(2)
         print(f'You are {self.name}, {self.race}, the {self.entity_class}, level {self.level}')

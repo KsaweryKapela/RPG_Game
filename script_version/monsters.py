@@ -1,6 +1,6 @@
 import time
 
-from script_version.entity import Entity
+from entity import Entity
 from random import randint
 
 
@@ -42,6 +42,7 @@ class NPC_Monster(Entity):
         self.set_stats_from_attributes()
 
     def print_stats(self):
+        print('\n')
         print(f'You see {self.name}, level {self.level}, attack type: {self.attack_type}')
         time.sleep(2)
         print('His stats are:')
@@ -64,8 +65,3 @@ class NPC_Monster(Entity):
         time.sleep(1)
 
         print(f'Crit chance: {self.crit_chance} %')
-
-
-
-
-

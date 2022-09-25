@@ -78,11 +78,11 @@ class Entity:
                 }
 
     def set_stats_from_attributes(self):
-        self.hp = self.strength
-        self.current_hp = self.strength
-        self.min_dmg = self.attributes[self.classes.main_attribute[self.entity_class]] / 4
-        self.max_dmg = self.attributes[self.classes.main_attribute[self.entity_class]] / 2
-        self.hit_chance = 50 + self.attributes['cunning']
+        self.hp = self.strength * 10
+        self.current_hp = self.strength * 10
+        self.min_dmg = (self.attributes[self.classes.main_attribute[self.entity_class]] / 4) * 10
+        self.max_dmg = (self.attributes[self.classes.main_attribute[self.entity_class]] / 2) * 10
+        self.hit_chance = self.attributes['cunning']
         self.crit_chance = self.attributes['agility'] + self.attributes['strength'] / 2
         self.armor = self.attributes['agility']
         self.luck = self.attributes['cunning'] / 4
