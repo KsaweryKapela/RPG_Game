@@ -28,14 +28,9 @@ class Gameplay:
         self.encounter_monster()
 
     def test(self):
-        monster = NPC_Monster(100, 'Warrior', 'Giant Spider')
         main_character = MainCharacter()
-        main_character.name = 'Test Hero'
-        main_character.cunning = 400
-        main_character.entity_class = 'Warrior'
-        main_character.set_stats_from_attributes()
-        fight = Fight(main_character, monster)
-        fight.turns()
+        main_character.create_character()
+
 
 
 gameplay = Gameplay()
