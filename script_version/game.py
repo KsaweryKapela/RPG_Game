@@ -22,15 +22,8 @@ class Gameplay:
         fight.fight()
 
     def gameplay(self):
-        os.system('CLS')
         self.start_game()
-        os.system('CLS')
         self.encounter_monster()
-
-    def test(self):
-        main_character = MainCharacter()
-        main_character.create_character()
-
 
 
 gameplay = Gameplay()

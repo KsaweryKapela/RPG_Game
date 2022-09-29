@@ -4,14 +4,16 @@ from functions import print_and_pause
 class Entity:
 
     def __init__(self):
-        self.entity_class = str
-        self.race = str
         self.name = str
 
         self.attack_type = str
         self.current_hp = int
 
         self.level = int
+
+        self.class_ = None
+        self.race = None
+
         self.attribute_points = 0
 
         self.strength = 5
@@ -19,6 +21,7 @@ class Entity:
         self.cunning = 5
 
         self.main_attribute = str
+        self.secondary_attributes = []
 
     @property
     def attributes(self):
