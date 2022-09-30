@@ -1,4 +1,4 @@
-from functions import print_and_pause
+from functions.functions import print_and_pause
 
 
 class Entity:
@@ -23,6 +23,9 @@ class Entity:
         self.main_attribute = str
         self.secondary_attributes = []
 
+        self.initiative_bonus = 0
+
+
     @property
     def attributes(self):
         return {'strength': self.strength,
@@ -36,11 +39,11 @@ class Entity:
 
     @property
     def min_dmg(self):
-        return self.attributes[self.main_attribute] / 4 * 10
+        return round(self.attributes[self.main_attribute] / 4 * 10)
 
     @property
     def max_dmg(self):
-        return self.attributes[self.main_attribute] / 2 * 10
+        return round(self.attributes[self.main_attribute] / 2 * 10)
 
     @property
     def hit_chance(self):
@@ -48,15 +51,20 @@ class Entity:
 
     @property
     def crit_chance(self):
-        return self.agility + self.strength / 2
+        return self.agility
 
     @property
     def dodge_chance(self):
         return self.agility
 
     @property
+    def initiative(self):
+        initiative = self.cunning + self.initiative_bonus
+        return initiative
+
+    @property
     def armor(self):
-        return self.agility + self.strength / 2
+        return self.strength
 
     @property
     def luck(self):
@@ -71,6 +79,7 @@ class Entity:
         print_and_pause(f'HP: {self.current_hp}/{self.hp}')
         print_and_pause(f'Damage: {self.min_dmg} - {self.max_dmg}')
         print_and_pause(f'Armor: {self.armor}')
-        print_and_pause(f'Hit chance: {self.hit_chance} %')
+        print_and_pause(f'Hit bonus: {self.hit_chance} %')
+        print_and_pause(f'Dodge bonus: {self.dodge_chance} %')
         print_and_pause(f'Crit chance: {self.crit_chance} %')
         print_and_pause(f'Luck chance: {self.luck} %')

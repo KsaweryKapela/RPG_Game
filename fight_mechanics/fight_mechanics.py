@@ -1,7 +1,7 @@
 from itertools import cycle
 from random import uniform
-from rolls import k20
-from functions import print_and_pause, is_lucky, is_crit
+from functions.rolls import k20
+from functions.functions import print_and_pause, is_lucky, is_crit
 
 
 class Fight:
@@ -12,7 +12,7 @@ class Fight:
         self.initiative_bar = None
 
     def roll_for_initiative(self):
-        if self.player.cunning + k20() > self.monster.cunning + k20():
+        if self.player.initiative + k20() > self.monster.initiative + k20():
             self.initiative_bar = cycle([self.player, self.monster])
             print_and_pause(f'{self.player.name} has reacted faster!')
 

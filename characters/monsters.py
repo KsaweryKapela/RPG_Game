@@ -1,9 +1,8 @@
-import time
-from entity import Entity
 from random import randint
 
-from functions import print_and_pause
-from script_version.races_and_classes import Races, Classes
+from characters.entity import Entity
+from functions.functions import print_and_pause
+from characters.races_and_classes import Races, Classes
 
 
 class NPC_Monster(Entity):

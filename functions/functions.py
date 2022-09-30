@@ -1,6 +1,6 @@
 import time
-
-from rolls import k100
+from functions.rolls import k100
+import os
 
 
 def print_and_pause(string, pause_time=1):
@@ -19,7 +19,6 @@ def check_input(string, list_of_answers=None):
 
 def is_lucky(entity_luck):
     roll = k100()
-
     if roll <= entity_luck:
         return True
     else:
@@ -34,3 +33,13 @@ def is_crit(entity_crit_chance):
     else:
         return False
 
+
+def clean_terminal():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
+def print_text(file_name):
+    with open(f'text/plot/text_files/{file_name}.txt') as f:
+        for line in f:
+            print_and_pause(line.strip())
+    time.sleep(2)
