@@ -1,16 +1,18 @@
 from random import randint
 
+from characters.classes.classes_dictionary import classes_dict
 from characters.entity import Entity
+from characters.races.races_dictionary import races_dict
 from functions.functions import print_and_pause
-from characters.races_and_classes import Races, Classes
 
 
 class NPC_Monster(Entity):
     def __init__(self, level, monster_class, monster_race, name=None):
         super().__init__()
         self.name = name if name else monster_race
-        self.race = Races(self, monster_race)
-        self.class_ = Classes(self, monster_class)
+
+        self.race = races_dict(monster_race)(self)
+        self.class_ = classes_dict(monster_class)(self)
         self.level = level
         self.attribute_points = 3 * self.level
         self.set_random_stats()
@@ -37,4 +39,3 @@ class NPC_Monster(Entity):
         if more_stats:
             print_and_pause('His stats are:')
             self.print_advanced_stats()
-

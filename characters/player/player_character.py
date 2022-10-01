@@ -1,7 +1,6 @@
 from characters.entity import Entity
 from characters.player.equipment import Equipment
 from functions.functions import print_and_pause, check_input
-from characters.races_and_classes import Classes, Races
 from functions.functions import clean_terminal
 
 
@@ -10,50 +9,8 @@ class MainCharacter(Entity):
     def __init__(self):
         super().__init__()
         self.level = 1
-        self.eq = Equipment(self)
-        self.eq.give_starting_items()
-        self.eq.print_eq()
-
-    @property
-    def max_capacity(self):
-        return self.strength * 10
-
-    @property
-    def current_capacity(self):
-        return self.max_capacity - self.eq.sum_weight()
-
-    def create_character(self):
-        while True:
-            if self.char_creation():
-                break
-
-    def char_creation(self):
-        self.strength = 5
-        self.agility = 5
-        self.cunning = 5
-
         self.attribute_points = 6
-        self.name = check_input('How are you called? ')
-
-        race = check_input('What\'s your race: human, orc or elf ', ['Human', 'Elf', 'Orc'])
-        self.race = Races(self, race)
-
-        class_ = check_input('Tell us your profession: rogue, warrior or archer ',
-                             ['Warrior', 'Rogue', 'Archer'])
-
-        self.class_ = Classes(self, class_)
-        print_and_pause('There are three main attributes: Strength, Agility and Cunning')
-        self.spend_attribute_points()
-        self.current_hp = self.hp
-
-        self.print_stats()
-        confirmation = check_input('Are you happy with your character? Yes/no ',
-                                   ['Yes', 'No', 'Y', 'N'])
-        if confirmation == 'No':
-            print_and_pause('Let\'s do it again then')
-            return False
-        elif confirmation == 'Yes':
-            return True
+        self.eq = Equipment(self)
 
     def spend_attribute_points(self):
         for atr in self.attributes:

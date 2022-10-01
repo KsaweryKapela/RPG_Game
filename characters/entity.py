@@ -14,6 +14,8 @@ class Entity:
         self.class_ = None
         self.race = None
 
+        self.eq = None
+
         self.attribute_points = 0
 
         self.strength = 5
@@ -31,6 +33,14 @@ class Entity:
                 'agility': self.agility,
                 'cunning': self.cunning,
                 }
+
+    @property
+    def max_capacity(self):
+        return self.strength * 10
+
+    @property
+    def current_capacity(self):
+        return self.max_capacity - self.eq.sum_weight()
 
     @property
     def hp(self):

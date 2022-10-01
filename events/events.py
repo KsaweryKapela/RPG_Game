@@ -8,8 +8,8 @@ from functions.functions import print_and_pause, clean_terminal, print_text
 class Events:
     def __init__(self, character):
         self.character = character
-        self.rat = NPC_Monster(0, 'Warrior', 'Giant rat')
-        self.rat_2 = NPC_Monster(0, 'Warrior', 'Giant rat')
+        self.rat = NPC_Monster(0, 'Warrior', 'Rat')
+        self.rat_2 = NPC_Monster(0, 'Warrior', 'Rat')
 
 
 class Event1(Events):

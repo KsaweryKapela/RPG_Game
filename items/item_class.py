@@ -1,25 +1,23 @@
 class Item:
-    def __init__(self):
-        self.name: str
+    def __init__(self, name, owner):
+        self.name = name
+        self.owner = owner
         self.weight = int
         self.category = str
-        self.owner = str
 
 
 class Armor(Item):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, name, owner):
+        super().__init__(name, owner)
         self.category = 'Armor'
         self.armor = int
 
 
 class Edible(Item):
     def __init__(self, name, owner):
-        super().__init__()
-        self.name = name
+        super().__init__(name, owner)
         self.health_regen = self.food_stats()[0]
         self.category = 'Edible'
-        self.owner = owner
         self.edible_during_combat = self.food_stats()[1]
 
     def eat_edible(self):
@@ -36,15 +34,14 @@ class Edible(Item):
 
 
 class Weapon(Item):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, name, owner):
+        super().__init__(name, owner)
         self.category = 'Weapon'
         self.damage = int
 
 
 class Misc(Item):
-    def __init__(self, name, function=None):
-        super().__init__()
+    def __init__(self, name, owner, function=None):
+        super().__init__(name, owner)
         self.category = 'Misc'
-        self.name = name
         self.function = function

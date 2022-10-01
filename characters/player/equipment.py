@@ -19,10 +19,6 @@ class Equipment:
                 self.items[arg.name] = 1
 
     def give_starting_items(self):
-        for apple in range(0, 5):
-            apple = Edible('Apple', self.player)
-            self.add_items(apple)
-
         flint = Misc('Flint', self.player)
         night_bag = Misc('Sleeping-bag', self.player)
 
@@ -31,5 +27,3 @@ class Equipment:
     def print_eq(self):
         for item, number in self.items.items():
             print_and_pause(f'{item} x {number}')
-
-
