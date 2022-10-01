@@ -1,4 +1,4 @@
-from characters.player_character import MainCharacter
+from characters.player.player_character import MainCharacter
 from text.plot.act_1 import ActOne
 
 

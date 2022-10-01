@@ -1,4 +1,5 @@
 from characters.entity import Entity
+from characters.player.equipment import Equipment
 from functions.functions import print_and_pause, check_input
 from characters.races_and_classes import Classes, Races
 from functions.functions import clean_terminal
@@ -9,6 +10,17 @@ class MainCharacter(Entity):
     def __init__(self):
         super().__init__()
         self.level = 1
+        self.eq = Equipment(self)
+        self.eq.give_starting_items()
+        self.eq.print_eq()
+
+    @property
+    def max_capacity(self):
+        return self.strength * 10
+
+    @property
+    def current_capacity(self):
+        return self.max_capacity - self.eq.sum_weight()
 
     def create_character(self):
         while True:
@@ -30,7 +42,7 @@ class MainCharacter(Entity):
                              ['Warrior', 'Rogue', 'Archer'])
 
         self.class_ = Classes(self, class_)
-
+        print_and_pause('There are three main attributes: Strength, Agility and Cunning')
         self.spend_attribute_points()
         self.current_hp = self.hp
 
@@ -48,7 +60,7 @@ class MainCharacter(Entity):
 
             while self.attribute_points:
                 added_atr = int(check_input(f'How much points would you like to put into {atr}?\n'
-                                            f'{self.attribute_points} left ',
+                                            f'{self.attribute_points} points left ',
                                             self.attribute_points_range()
                                             ))
                 new_value = getattr(self, atr) + added_atr

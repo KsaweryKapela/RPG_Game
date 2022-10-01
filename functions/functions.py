@@ -38,8 +38,8 @@ def clean_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-def print_text(file_name):
-    with open(f'text/plot/text_files/{file_name}.txt') as f:
+def print_text(file_path):
+    with open(file_path) as f:
         for line in f:
             print_and_pause(line.strip())
     time.sleep(2)

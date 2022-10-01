@@ -2,7 +2,7 @@ import time
 
 from characters.monsters import NPC_Monster
 from fight_mechanics.fight_mechanics import Fight
-from functions.functions import print_and_pause, clean_terminal
+from functions.functions import print_and_pause, clean_terminal, print_text
 
 
 class Events:
@@ -11,20 +11,11 @@ class Events:
         self.rat = NPC_Monster(0, 'Warrior', 'Giant rat')
         self.rat_2 = NPC_Monster(0, 'Warrior', 'Giant rat')
 
-    def print_event_text(self, file_name):
-        with open(f'events/events_text/{file_name}.txt') as f:
-            for line in f:
-                if line[0] == '$':
-                    exec(line[2:])
-                else:
-                    print_and_pause(line.strip())
-        time.sleep(2)
-
 
 class Event1(Events):
 
     def plot(self):
-        self.print_event_text('event_1')
+        print_text('events/events_text/event_1.0.txt')
 
     def debuff(self):
         self.character.strength -= 2

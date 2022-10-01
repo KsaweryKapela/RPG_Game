@@ -1,7 +1,6 @@
-from characters.player_character import MainCharacter
+from characters.player.player_character import MainCharacter
 from characters.races_and_classes import Classes, Races
 from events.events import Event1
-from text.plot.act_1 import ActOne
 
 
 class Gameplay:

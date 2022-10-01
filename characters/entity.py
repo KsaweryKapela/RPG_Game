@@ -25,7 +25,6 @@ class Entity:
 
         self.initiative_bonus = 0
 
-
     @property
     def attributes(self):
         return {'strength': self.strength,
