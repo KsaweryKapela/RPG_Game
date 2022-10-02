@@ -1,7 +1,7 @@
 from characters.entity import Entity
 from characters.player.equipment import Equipment
-from functions.functions import print_and_pause, check_input
-from functions.functions import clean_terminal
+from functions.basic_functions import print_and_pause, check_input, check_input_multiple
+from functions.basic_functions import clean_terminal
 
 
 class MainCharacter(Entity):
@@ -12,14 +12,15 @@ class MainCharacter(Entity):
         self.attribute_points = 6
         self.eq = Equipment(self)
 
+
     def spend_attribute_points(self):
         for atr in self.attributes:
 
             while self.attribute_points:
-                added_atr = int(check_input(f'How much points would you like to put into {atr}?\n'
-                                            f'{self.attribute_points} points left ',
-                                            self.attribute_points_range()
-                                            ))
+                added_atr = int(check_input_multiple(f'How much points would you like to put into {atr}?\n'
+                                                     f'{self.attribute_points} points left ',
+                                                     self.attribute_points_range()
+                                                     ))
                 new_value = getattr(self, atr) + added_atr
                 setattr(self, atr, new_value)
                 self.attribute_points -= added_atr

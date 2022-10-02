@@ -8,13 +8,37 @@ def print_and_pause(string, pause_time=1):
     time.sleep(pause_time)
 
 
-def check_input(string, list_of_answers=None):
+def print_and_pause_multiple(string, pause_time=1):
+    text = string.split('\n')
+    for line in text:
+        print_and_pause(line, pause_time)
+
+
+def check_input(string, list_of_answers=False):
     answer = input(string).capitalize()
     if list_of_answers:
         if answer not in list_of_answers:
             print('Invalid response')
             return check_input(string, list_of_answers)
     return answer.capitalize()
+
+
+def check_input_multiple(string, list_of_answers=False):
+    new_string = string.split('\n')
+    for line in new_string:
+
+        if line == new_string[-1]:
+            answer = input(line).capitalize()
+            if answer not in list_of_answers:
+                print_and_pause('Invalid response')
+                return check_input(line, list_of_answers)
+            else:
+                return answer.capitalize()
+
+        else:
+            print_and_pause(line)
+
+    raise 'Last line != last loop iteration!!!'
 
 
 def is_lucky(entity_luck):

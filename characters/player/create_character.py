@@ -1,7 +1,7 @@
 from characters.classes.classes_dictionary import classes_dict
 from characters.player.player_character import MainCharacter
 from characters.races.races_dictionary import races_dict
-from functions.functions import check_input, print_and_pause
+from functions.basic_functions import check_input, print_and_pause
 
 
 def create_character():
@@ -13,7 +13,7 @@ def create_character():
 
     character.race = races_dict(race)(character)
 
-    class_ = check_input('Tell us your profession: warrior, rogue or bard ',
+    class_ = check_input('Are you a warrior, rogue or a bard? ',
                          ['Warrior', 'Rogue', 'Bard'])
 
     character.class_ = classes_dict(class_)(character)

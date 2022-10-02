@@ -1,4 +1,4 @@
-from functions.functions import print_and_pause
+from functions.basic_functions import print_and_pause
 
 
 class Entity:

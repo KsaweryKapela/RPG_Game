@@ -1,7 +1,7 @@
 from itertools import cycle
 from random import uniform
 from functions.rolls import k20
-from functions.functions import print_and_pause, is_lucky, is_crit
+from functions.basic_functions import print_and_pause, is_lucky, is_crit
 
 
 class Fight:

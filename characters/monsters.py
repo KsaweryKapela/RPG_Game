@@ -3,7 +3,7 @@ from random import randint
 from characters.classes.classes_dictionary import classes_dict
 from characters.entity import Entity
 from characters.races.races_dictionary import races_dict
-from functions.functions import print_and_pause
+from functions.basic_functions import print_and_pause
 
 
 class NPC_Monster(Entity):
