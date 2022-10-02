@@ -1,0 +1,5 @@
+You stand outside of the cave,
+on the sunny glade inside the forest.
+What would you like to do now?
+You can go through your equipment, check your stats,
+look around, or enter the cave.

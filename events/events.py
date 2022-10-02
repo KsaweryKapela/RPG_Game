@@ -16,6 +16,10 @@ class Event1(Events):
 
     def plot(self):
         print_text('events/events_text/event_1.0.txt')
+        self.debuff()
+        print_text('events/events_text/event_1.1.txt')
+        self.cunning_test()
+        self.rat_encounter()
 
     def debuff(self):
         self.character.strength -= 2

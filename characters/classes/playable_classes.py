@@ -9,7 +9,8 @@ class Warrior(Class_):
         self.character.strength += 2
         self.character.main_attribute = 'strength'
         self.character.secondary_attributes = ['agility', 'cunning']
-        self.give_starting_items()
+        if self.character.player_char:
+            self.give_starting_items()
 
     def give_starting_items(self):
         sword = Weapon('Short sword', self.character)

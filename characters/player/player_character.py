@@ -8,10 +8,10 @@ class MainCharacter(Entity):
 
     def __init__(self):
         super().__init__()
+        self.player_char = True
         self.level = 1
         self.attribute_points = 6
         self.eq = Equipment(self)
-
 
     def spend_attribute_points(self):
         for atr in self.attributes:

@@ -10,7 +10,7 @@ class NPC_Monster(Entity):
     def __init__(self, level, monster_class, monster_race, name=None):
         super().__init__()
         self.name = name if name else monster_race
-
+        self.player_char = False
         self.race = races_dict(monster_race)(self)
         self.class_ = classes_dict(monster_class)(self)
         self.level = level

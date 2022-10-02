@@ -1,34 +1,32 @@
-from characters.player.create_character import create_character
+from characters.classes.classes_dictionary import classes_dict
+from characters.monsters import NPC_Monster
 from characters.player.player_character import MainCharacter
-from events.events import Event1
+from characters.races.races_dictionary import races_dict
+from fight_mechanics.fight_mechanics import Fight
+from plot.act_one.act_1 import ActOne
 
 
-class Gameplay:
-    # def __init__(self):
-    #     # self.main_character = MainCharacter()
-
-    def test_creating_char(self):
-        main_character = create_character()
-        print(main_character.name)
-        print(main_character.strength)
-
-    # def create_test_char(self):
-    #     self.main_character.name = 'Testing_character'
-    #     self.main_character.race = Races(self.main_character, 'Orc')
-    #     self.main_character.class_ = Classes(self.main_character, 'Warrior')
-    #     self.main_character.attribute_points = 6
-    #     self.main_character.strength += 3
-    #     self.main_character.agility += 1
-    #     self.main_character.cunning += 1
-    #     self.main_character.current_hp = self.main_character.hp
+def create_test_char():
+    character = MainCharacter()
+    character.name = 'Test Character'
+    character.race = races_dict('Human')(character)
+    character.class_ = classes_dict('Bard')(character)
+    character.strength += 1
+    character.agility += 2
+    character.cunning += 3
+    character.attribute_points = 0
+    character.current_hp = character.hp
+    return character
 
 
-    def gameplay(self):
-        self.create_test_char()
-        event = Event1(self.main_character)
-        event.plot()
+def run_game():
+    character = create_test_char()
+    rat = NPC_Monster(0, 'Warrior', 'Rat')
+    fight = Fight(character, rat)
+    fight.fight()
+
+    # first_act = ActOne(character)
+    # first_act.caves_outsides_action()
 
 
-gameplay = Gameplay()
-gameplay.gameplay()
-
+run_game()
