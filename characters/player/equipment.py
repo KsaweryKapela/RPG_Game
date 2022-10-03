@@ -1,6 +1,6 @@
 import pandas as pd
 from items.item_class import Misc
-from functions.basic_functions import print_and_pause, clean_terminal
+from functions.basic_functions import print_and_pause, clean_terminal, check_input
 
 
 def if_not_empty_print(dataframe):
@@ -9,8 +9,8 @@ def if_not_empty_print(dataframe):
 
 
 class Equipment:
-    def __init__(self, player):
-        self.player = player
+    def __init__(self, character):
+        self.character = character
         self.items = {}
         self.give_starting_items()
         self.equipped_weapon = None
@@ -42,10 +42,12 @@ class Equipment:
                 self.items[arg] += 1
             else:
                 self.items[arg] = 1
+        if self.sum_weight > self.character.max_capacity:
+            self.max_capacity()
 
     def give_starting_items(self):
-        flint = Misc('Flint', self.player)
-        night_bag = Misc('Sleeping-bag', self.player)
+        flint = Misc('Flint', self.character)
+        night_bag = Misc('Sleeping-bag', self.character)
         self.add_items(flint, night_bag)
 
     def print_eq(self):
@@ -56,8 +58,7 @@ class Equipment:
                  'Type': [item.category for item in self.weapons.keys()],
                  }
 
-        weapons_dataframe = pd.DataFrame(data=weapons)\
-            .set_index('Weapons')
+        weapons_dataframe = pd.DataFrame(data=weapons).set_index('Weapons')
 
         armors = {
                  'Armors': [item.name for item in self.armors.keys()],
@@ -77,8 +78,7 @@ class Equipment:
                  'Type': [item.category for item in self.edibles.keys()],
                  }
 
-        edible_dataframe = pd.DataFrame(data=edible)\
-            .set_index('Edibles')
+        edible_dataframe = pd.DataFrame(data=edible).set_index('Edibles')
 
         misc = {
                  'Misc': [item.name for item in self.misc.keys()],
@@ -87,12 +87,48 @@ class Equipment:
                  'Type': [item.category for item in self.misc.keys()],
                  }
 
-        misc_dataframe = pd.DataFrame(data=misc)\
-            .set_index('Misc')
+        misc_dataframe = pd.DataFrame(data=misc).set_index('Misc')
 
         clean_terminal()
+        print(f'Capacity: {self.sum_weight}/{self.character.max_capacity}')
         if_not_empty_print(weapons_dataframe)
         if_not_empty_print(armors_dataframe)
         if_not_empty_print(edible_dataframe)
         if_not_empty_print(misc_dataframe)
+        self.operate_eq()
 
+    def operate_eq(self):
+        value = [item.name for item in self.items]
+        value.append('Quit')
+        users_input = check_input('Type items name or quit ', value)
+        if users_input == 'Quit':
+            return
+        else:
+            self.get_item(users_input)
+
+    def get_item(self, chosen_item):
+        searched_item = None
+
+        for item in self.items.keys():
+            if item.name == chosen_item:
+                searched_item = item
+                break
+
+        if searched_item:
+            print(searched_item.name)
+            commands = ['Back', 'Quit', 'Drop']
+            user_input = check_input('Drop item, use item, go back or quit', commands)
+            if user_input == 'Drop':
+                del self.items[searched_item]
+                self.print_eq()
+            elif user_input == 'Back':
+                self.print_eq()
+            elif user_input == 'Quit':
+                return
+
+    def max_capacity(self):
+        clean_terminal()
+        print_and_pause('You must drop some items before your next action!')
+        self.print_eq()
+        if self.sum_weight > self.character.max_capacity:
+            self.max_capacity()

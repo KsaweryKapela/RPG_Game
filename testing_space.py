@@ -3,6 +3,7 @@ from characters.monsters import NPC_Monster
 from characters.player.player_character import MainCharacter
 from characters.races.races_dictionary import races_dict
 from fight_mechanics.fight_mechanics import Fight
+from items.item_class import Misc
 from plot.act_one.act_1 import ActOne
 
 
@@ -21,12 +22,14 @@ def create_test_char():
 
 def run_game():
     character = create_test_char()
-    rat = NPC_Monster(0, 'Warrior', 'Rat')
-    fight = Fight(character, rat)
-    fight.fight()
-
-    # first_act = ActOne(character)
-    # first_act.caves_outsides_action()
+    # rat = NPC_Monster(0, 'Warrior', 'Rat')
+    # fight = Fight(character, rat)
+    # fight.fight()
+    sleeping_bag = Misc('Sleeping-bag', character)
+    sleeping_bag_2 = Misc('Sleeping-bag', character)
+    character.eq.add_items(sleeping_bag, sleeping_bag_2)
+    first_act = ActOne(character)
+    first_act.caves_outsides_action()
 
 
 run_game()

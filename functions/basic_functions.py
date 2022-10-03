@@ -15,7 +15,13 @@ def print_and_pause_multiple(string, pause_time=1):
 
 
 def check_input(string, list_of_answers=False):
+    if str(string)[-1] != ' ':
+        string = str(string) + ' '
     answer = input(string).capitalize()
+    if answer == 'Help':
+        print(list_of_answers)
+        return check_input(string, list_of_answers)
+
     if list_of_answers:
         if answer not in list_of_answers:
             print('Invalid response')
