@@ -1,14 +1,18 @@
 from characters.player.create_character import create_character
 from events.events import Event1
 from functions.basic_functions import print_and_pause, clean_terminal, print_text, check_input, check_input_multiple
+from functions.input_class import CheckInput
+from plot.act_one.act_1_5 import actOnePointFive
 
 
 class ActOne:
     def __init__(self, character=create_character):
         self.character = character
-        self.actions = ['Eq', 'Look', 'Stats', 'Enter']
+        self.plot_device = CheckInput(self.character)
+        self.actions = ['Look', 'Enter']
+        self.act_1_5 = actOnePointFive(self.character)
 
-    def plot(self):
+    def run(self):
         clean_terminal()
         print_text('plot/act_one/text_files/introduction.txt')
         clean_terminal()
@@ -22,21 +26,17 @@ class ActOne:
 
     def caves_outsides_action(self):
         action_dict = {
-            'Eq': self.character.eq.print_eq,
-            'Stats': self.character.print_stats,
             'Enter': self.entrance,
             'Look': self.look_around
         }
-        action = check_input(f'What now? {self.actions}? ', self.actions)
-        if action == 'Enter':
-            action_dict[action]()
-        else:
-            action_dict[action]()
-            self.caves_outsides_action()
+
+        action = self.plot_device.catch_input(f'What now would you like to do now?', self.actions)
+        print(action)
+        action_dict[action]()
 
     def look_around(self):
-        print('Theres nothing to do here!')
-        self.actions.remove('Look')
+        self.act_1_5.run()
+        self.caves_outsides_action()
 
     def entrance(self):
         clean_terminal()

@@ -25,9 +25,7 @@ def run_game():
     # rat = NPC_Monster(0, 'Warrior', 'Rat')
     # fight = Fight(character, rat)
     # fight.fight()
-    sleeping_bag = Misc('Sleeping-bag', character)
-    sleeping_bag_2 = Misc('Sleeping-bag', character)
-    character.eq.add_items(sleeping_bag, sleeping_bag_2)
+
     first_act = ActOne(character)
     first_act.caves_outsides_action()
 

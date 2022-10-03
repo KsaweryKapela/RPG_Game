@@ -34,7 +34,7 @@ class NPC_Monster(Entity):
 
             self.attribute_points -= 1
 
-    def print_stats(self, more_stats=False):
+    def print_stats(self, more_stats=True):
         print_and_pause(f'You see {self.name}, level {self.level}, attack type: {self.attack_type}')
         if more_stats:
             print_and_pause('His stats are:')

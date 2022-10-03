@@ -22,7 +22,7 @@ def create_character():
     character.spend_attribute_points()
     character.current_hp = character.hp
 
-    character.print_stats()
+    character.print_stats(False)
     if confirm_your_choice():
         return character
 

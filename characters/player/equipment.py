@@ -124,7 +124,7 @@ class Equipment:
             elif user_input == 'Back':
                 self.print_eq()
             elif user_input == 'Quit':
-                return
+                pass
 
     def max_capacity(self):
         clean_terminal()

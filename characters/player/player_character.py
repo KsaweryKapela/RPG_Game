@@ -27,14 +27,14 @@ class MainCharacter(Entity):
                 break
         print_and_pause('You have spent your attributes')
 
-    def print_stats(self, advanced_stats=False):
+    def print_stats(self, advanced_stats=True):
         clean_terminal()
-        print_and_pause(f'You are {self.name}, {self.race.name}, the {self.class_.name}, level {self.level}')
-        print_and_pause('Your stats are:')
+        print(f'You are {self.name}, {self.race.name}, the {self.class_.name}, level {self.level}')
+        print('Your stats are:')
         if advanced_stats:
             self.print_advanced_stats()
         else:
-            print_and_pause(f'Strength: {self.strength}, '
+            print(f'Strength: {self.strength}, '
                             f'Agility: {self.agility}, '
                             f'Cunning: {self.cunning}, ')
 

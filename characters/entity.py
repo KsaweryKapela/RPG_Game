@@ -80,15 +80,15 @@ class Entity:
         return round(self.cunning / 4)
 
     def print_advanced_stats(self):
-        print_and_pause(f'Strength: {self.strength}, '
+        print(f'Strength: {self.strength}, '
                         f'Agility: {self.agility}, '
                         f'Cunning: {self.cunning}, ')
         if self.attribute_points > 0:
-            print_and_pause(f'You can still spend {self.attribute_points} attribute points')
-        print_and_pause(f'HP: {self.current_hp}/{self.hp}')
-        print_and_pause(f'Damage: {self.min_dmg} - {self.max_dmg}')
-        print_and_pause(f'Armor: {self.armor}')
-        print_and_pause(f'Hit bonus: {self.hit_chance} %')
-        print_and_pause(f'Dodge bonus: {self.dodge_chance} %')
-        print_and_pause(f'Crit chance: {self.crit_chance} %')
-        print_and_pause(f'Luck chance: {self.luck} %')
+            print(f'You can still spend {self.attribute_points} attribute points')
+        print(f'HP: {self.current_hp}/{self.hp}')
+        print(f'Damage: {self.min_dmg} - {self.max_dmg}')
+        print(f'Armor: {self.armor}')
+        print(f'Hit bonus: {self.hit_chance} %')
+        print(f'Dodge bonus: {self.dodge_chance} %')
+        print(f'Crit chance: {self.crit_chance} %')
+        print(f'Luck chance: {self.luck} %')
