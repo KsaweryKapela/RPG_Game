@@ -73,3 +73,11 @@ def print_text(file_path):
         for line in f:
             print_and_pause(line.strip())
     time.sleep(2)
+
+
+def range_list(starting_int, ending_int):
+    list_of_range = []
+    for number in range(starting_int, ending_int):
+        list_of_range.append(number)
+    return list_of_range
+

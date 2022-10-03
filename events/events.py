@@ -1,6 +1,6 @@
 import time
 
-from characters.monsters import NPC_Monster
+from monsters.monsters import NPC_Monster
 from fight_mechanics.fight_mechanics import Fight
 from functions.basic_functions import print_and_pause, clean_terminal, print_text
 

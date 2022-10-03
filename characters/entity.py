@@ -10,7 +10,7 @@ class Entity:
         self.current_hp = int
 
         self.level = int
-        self.player_char = None
+        self.player_char = False
         self.class_ = None
         self.race = None
 

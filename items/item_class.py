@@ -10,7 +10,7 @@ class Armor(Item):
     def __init__(self, name, owner):
         super().__init__(name, owner)
         self.category = 'Armor'
-        self.dogde_chance = self.armor_stats('dodge_chance')
+        self.dodge = self.armor_stats('dodge_chance')
         self.armor = self.armor_stats('armor')
         self.weight = self.armor_stats('weight')
 

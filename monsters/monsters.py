@@ -3,20 +3,36 @@ from random import randint
 from characters.classes.classes_dictionary import classes_dict
 from characters.entity import Entity
 from characters.races.races_dictionary import races_dict
-from functions.basic_functions import print_and_pause
+from functions.basic_functions import print_and_pause, range_list
 
 
 class NPC_Monster(Entity):
-    def __init__(self, level, monster_class, monster_race, name=None):
+    def __init__(self, level, monster_race):
         super().__init__()
-        self.name = name if name else monster_race
-        self.player_char = False
-        self.race = races_dict(monster_race)(self)
-        self.class_ = classes_dict(monster_class)(self)
         self.level = level
-        self.attribute_points = 3 * self.level
+        self.race = monster_race(self)
+        self.hostility = self.race.hostility
+        self.threat = self.level * self.race.threat
+        self.attribute_points = self.threat
+        print(self.attribute_points)
+        self.name = self.set_monsters_name()
+
         self.set_random_stats()
         self.current_hp = self.hp
+
+    def set_monsters_name(self):
+        size = ''
+        if self.threat in range_list(0, 3):
+            size = 'Small'
+        elif self.threat in range_list(3, 7):
+            size = 'Medium'
+        elif self.threat in range_list(7, 12):
+            size = 'Grand'
+        elif self.threat in range_list(12, 1000):
+            size = 'Colossal'
+
+        if self.race.type in ['Forest_animal', 'Cave_animal']:
+            return f'{size} {self.race.name}'
 
     def set_random_stats(self):
         while self.attribute_points:

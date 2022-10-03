@@ -1,9 +1,9 @@
 from characters.classes.classes_dictionary import classes_dict
-from characters.monsters import NPC_Monster
 from characters.player.player_character import MainCharacter
+from characters.races.npc_races import Hedgehog, Bear
 from characters.races.races_dictionary import races_dict
 from fight_mechanics.fight_mechanics import Fight
-from items.item_class import Misc
+from monsters.monsters import NPC_Monster
 from plot.act_one.act_1 import ActOne
 
 
@@ -25,9 +25,12 @@ def run_game():
     # rat = NPC_Monster(0, 'Warrior', 'Rat')
     # fight = Fight(character, rat)
     # fight.fight()
-
-    first_act = ActOne(character)
-    first_act.caves_outsides_action()
-
+    #
+    # first_act = ActOne(character)
+    # first_act.caves_outsides_action()
+    hedgehog = NPC_Monster(50, Hedgehog)
+    hedgehog.print_advanced_stats()
+    fight = Fight(character, hedgehog)
+    fight.fight()
 
 run_game()
