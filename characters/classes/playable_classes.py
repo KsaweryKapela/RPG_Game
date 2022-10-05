@@ -16,6 +16,8 @@ class Warrior(Class_):
         sword = Weapon('Short sword', self.character)
         leather_armor = Armor('Leather armor', self.character)
         self.character.eq.add_items(sword, leather_armor)
+        self.character.eq.equipped_weapon = sword
+        self.character.eq.equipped_armor = leather_armor
 
 
 class Rogue(Class_):
@@ -32,6 +34,8 @@ class Rogue(Class_):
         old_cape = Armor('Old cape', self.character)
         lock_pick = Misc('Lockpick', self.character)
         self.character.eq.add_items(dagger, old_cape, lock_pick)
+        self.character.eq.equipped_weapon = dagger
+        self.character.eq.equipped_armor = old_cape
 
 
 class Bard(Class_):
@@ -48,3 +52,5 @@ class Bard(Class_):
         pretty_clothes = Armor('Pretty clothes', self.character)
         ukulele = Misc('Ukulele', self.character)
         self.character.eq.add_items(wooden_staff, pretty_clothes, ukulele)
+        self.character.eq.equipped_weapon = wooden_staff
+        self.character.eq.equipped_armor = pretty_clothes

@@ -1,10 +1,13 @@
+from random import random
+
 from characters.classes.classes_dictionary import classes_dict
 from characters.player.player_character import MainCharacter
 from characters.races.npc_races import Hedgehog, Bear
 from characters.races.races_dictionary import races_dict
 from fight_mechanics.fight_mechanics import Fight
-from monsters.monsters import NPC_Monster
+from monsters.monsters_class import NPC_Monster
 from plot.act_one.act_1 import ActOne
+from plot.act_one.act_1_5 import ActOnePointFive
 
 
 def create_test_char():
@@ -22,15 +25,13 @@ def create_test_char():
 
 def run_game():
     character = create_test_char()
-    # rat = NPC_Monster(0, 'Warrior', 'Rat')
-    # fight = Fight(character, rat)
-    # fight.fight()
+    act_1_5 = ActOnePointFive(character)
+    act_1_5.wild_animal_encounter()
+
+
     #
     # first_act = ActOne(character)
     # first_act.caves_outsides_action()
-    hedgehog = NPC_Monster(50, Hedgehog)
-    hedgehog.print_advanced_stats()
-    fight = Fight(character, hedgehog)
-    fight.fight()
+
 
 run_game()

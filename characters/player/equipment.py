@@ -63,7 +63,7 @@ class Equipment:
         armors = {
                  'Armors': [item.name for item in self.armors.keys()],
                  'Armor': [item.armor for item in self.armors.keys()],
-                 'Dodge': [item.dogde_chance for item in self.armors.keys()],
+                 'Dodge': [item.dodge for item in self.armors.keys()],
                  'Weight': [item.weight for item in self.armors.keys()],
                  'Type': [item.category for item in self.armors.keys()],
                  }

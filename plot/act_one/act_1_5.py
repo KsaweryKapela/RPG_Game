@@ -1,7 +1,13 @@
+import random
+
+from fight_mechanics.fight_mechanics import Fight
 from functions.basic_functions import print_text, print_and_pause, clean_terminal
 from functions.input_class import CheckInput
 from functions.rolls import k100
 from items.item_class import Edible
+from monsters.monster_encounter import MonsterEncounter
+from monsters.monsters_class import NPC_Monster
+from monsters.monsters_dict import monsters_dict
 
 
 class ActOnePointFive:
@@ -32,13 +38,13 @@ class ActOnePointFive:
         self.actions_1_dictionary[action]()
 
     def pick_up_apples(self):
-        self.wild_animal_encounter()
         if self.first_time_apple_tree:
             print_and_pause('Great apple tree is full of ripe, red fruits.')
             print_and_pause('You pick one and hide it in your backpack')
             self.first_time_apple_tree = False
 
         elif not self.first_time_apple_tree:
+            self.wild_animal_encounter()
             print_and_pause('You pick up another apple')
 
         apple = Edible('Apple', self.character)
@@ -51,9 +57,13 @@ class ActOnePointFive:
             self.pick_up_apples()
 
     def wild_animal_encounter(self):
-        if k100() > 90:
-            print_and_pause('Sadly, you aren\'t the only one, who wants to eat apples!')
-        monster = Monster()
+        if k100() > 0:
+            print_and_pause('Sadly, you aren\'t the only one, who wants to eat apples!', 0)
+            animal = random.choice(monsters_dict['Forest_animal'])
+            level = random.randint(0, 2)
+            monster = NPC_Monster(level, animal)
+            encounter = MonsterEncounter(self.character, monster)
+            encounter.run()
 
     def harvest_schrooms(self):
         pass

@@ -11,14 +11,18 @@ class CheckInput:
 
         self.current_list_of_answers = None
         self.current_input_string = None
+        self.special_actions = None
 
-    def catch_input(self, string, list_of_answers=False):
+    def catch_input(self, string, list_of_answers=False, special_actions=None):
         if str(string)[-1] != ' ':
             self.current_input_string = str(string) + ' '
         else:
             self.current_input_string = string
 
         self.current_list_of_answers = list_of_answers
+
+        self.special_actions = special_actions
+
         return self.check_input()
 
     def check_input(self):
@@ -38,3 +42,5 @@ class CheckInput:
     def help(self):
         print(f'Situational commands: {self.current_list_of_answers}')
         print(f'Basic commands: {self.basic_commands}')
+        if self.special_actions:
+            print(f'Special commands: {self.special_actions}')

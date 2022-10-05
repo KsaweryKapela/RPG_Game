@@ -10,14 +10,17 @@ class Fight:
         self.monster = monster
         self.fight_on = True
         self.initiative_bar = None
+        self.fight_commands = ['Attack', 'Run']
 
     def roll_for_initiative(self):
+        print_and_pause('*Roll for initiative*')
+
         if self.player.initiative + k20() > self.monster.initiative + k20():
             self.initiative_bar = cycle([self.player, self.monster])
-            print_and_pause(f'{self.player.name} has reacted faster!')
+            print_and_pause(f'You have reacted faster!')
 
             if is_lucky(self.player.luck):
-                print_and_pause(f'... but thanks to {self.monster.name}\'s luck, {self.player.name} has slipped!')
+                print_and_pause(f'... but thanks to {self.monster.name}\'s luck, you stumbled!')
                 self.initiative_bar = cycle([self.monster, self.player])
         else:
             self.initiative_bar = cycle([self.monster, self.player])
