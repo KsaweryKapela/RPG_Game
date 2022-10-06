@@ -58,7 +58,7 @@ class ActOnePointFive:
 
     def wild_animal_encounter(self):
         if k100() > 0:
-            print_and_pause('Sadly, you aren\'t the only one, who wants to eat apples!', 0)
+            print_and_pause('Looks like you aren\'t the only one, who wants to eat apples.', 1)
             animal = random.choice(monsters_dict['Forest_animal'])
             level = random.randint(0, 2)
             monster = NPC_Monster(level, animal)

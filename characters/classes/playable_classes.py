@@ -1,8 +1,8 @@
-from characters.classes.class_ import Class_
+from characters.classes.abstract_char_class import AbstractCharClass
 from items.item_class import Weapon, Armor, Misc
 
 
-class Warrior(Class_):
+class Warrior(AbstractCharClass):
     def __init__(self, character):
         super().__init__(character)
         self.name = 'Warrior'
@@ -20,7 +20,7 @@ class Warrior(Class_):
         self.character.eq.equipped_armor = leather_armor
 
 
-class Rogue(Class_):
+class Rogue(AbstractCharClass):
     def __init__(self, character):
         super().__init__(character)
         self.name = 'Rogue'
@@ -38,7 +38,7 @@ class Rogue(Class_):
         self.character.eq.equipped_armor = old_cape
 
 
-class Bard(Class_):
+class Bard(AbstractCharClass):
     def __init__(self, character):
         super().__init__(character)
         self.name = 'Bard'

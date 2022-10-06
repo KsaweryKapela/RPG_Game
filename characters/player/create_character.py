@@ -1,4 +1,4 @@
-from characters.classes.classes_dictionary import classes_dict
+from characters.classes.classes_dict import classes_dict
 from characters.player.player_character import MainCharacter
 from characters.races.races_dictionary import races_dict
 from functions.basic_functions import check_input, print_and_pause
@@ -16,7 +16,7 @@ def create_character():
     class_ = check_input('Are you a warrior, rogue or a bard? ',
                          ['Warrior', 'Rogue', 'Bard'])
 
-    character.class_ = classes_dict(class_)(character)
+    character.char_class = classes_dict(class_)(character)
 
     print_and_pause('There are three main attributes: Strength, Agility and Cunning')
     character.spend_attribute_points()

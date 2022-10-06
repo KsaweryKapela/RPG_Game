@@ -1,7 +1,10 @@
-class Race:
+from abc import ABC, abstractmethod
 
+
+class AbstractCharRace(ABC):
+
+    @abstractmethod
     def __init__(self, character):
-        self.name = str
         self.character = character
 
     def set_race_bonuses(self,

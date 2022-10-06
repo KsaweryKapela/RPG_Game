@@ -1,20 +1,20 @@
-from characters.races.race import Race
+from characters.races.abstract_char_race import AbstractCharRace
 
-class Human(Race):
+class Human(AbstractCharRace):
     def __init__(self, character):
         super().__init__(character)
         self.name = 'Human'
         self.set_race_bonuses(bonus_strength=-1, bonus_agility=-1, bonus_cunning=2)
 
 
-class Elf(Race):
+class Elf(AbstractCharRace):
     def __init__(self, character):
         super().__init__(character)
         self.name = 'Elf'
         self.set_race_bonuses(bonus_strength=-2, bonus_agility=2, bonus_cunning=0)
 
 
-class Orc(Race):
+class Orc(AbstractCharRace):
     def __init__(self, character):
         super().__init__(character)
         self.character = character

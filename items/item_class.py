@@ -1,9 +1,11 @@
-class Item:
+from abc import ABC, abstractmethod
+
+
+class Item(ABC):
+    @abstractmethod
     def __init__(self, name, owner):
         self.name = name
         self.owner = owner
-        self.weight = int
-        self.category = str
 
 
 class Armor(Item):

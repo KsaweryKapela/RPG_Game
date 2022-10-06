@@ -11,7 +11,7 @@ class Entity:
 
         self.level = int
         self.player_char = False
-        self.class_ = None
+        self.char_class = None
         self.race = None
 
         self.eq = None
@@ -81,8 +81,8 @@ class Entity:
 
     def print_advanced_stats(self):
         print(f'Strength: {self.strength}, '
-                        f'Agility: {self.agility}, '
-                        f'Cunning: {self.cunning}, ')
+              f'Agility: {self.agility}, '
+              f'Cunning: {self.cunning}, ')
         if self.attribute_points > 0:
             print(f'You can still spend {self.attribute_points} attribute points')
         print(f'HP: {self.current_hp}/{self.hp}')

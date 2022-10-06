@@ -1,6 +1,6 @@
 from random import random
 
-from characters.classes.classes_dictionary import classes_dict
+from characters.classes.classes_dict import classes_dict
 from characters.player.player_character import MainCharacter
 from characters.races.npc_races import Hedgehog, Bear
 from characters.races.races_dictionary import races_dict
@@ -14,7 +14,7 @@ def create_test_char():
     character = MainCharacter()
     character.name = 'Test Character'
     character.race = races_dict('Human')(character)
-    character.class_ = classes_dict('Bard')(character)
+    character.char_class = classes_dict('Bard')(character)
     character.strength += 1
     character.agility += 2
     character.cunning += 3
@@ -28,8 +28,6 @@ def run_game():
     act_1_5 = ActOnePointFive(character)
     act_1_5.wild_animal_encounter()
 
-
-    #
     # first_act = ActOne(character)
     # first_act.caves_outsides_action()
 

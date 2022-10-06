@@ -1,9 +1,8 @@
 from random import randint
 
-from characters.classes.classes_dictionary import classes_dict
 from characters.entity import Entity
-from characters.races.races_dictionary import races_dict
 from functions.basic_functions import print_and_pause, range_list
+from functions.rolls import k100, k50
 from monsters.monsters_dict import hostility_dict, animal_adjectives_dict
 
 
@@ -12,14 +11,19 @@ class NPC_Monster(Entity):
         super().__init__()
         self.level = level
         self.race = monster_race(self)
-        self.hostility = self.race.hostility
+        self.hostility = self.set_hostility()
+        self.hostility_string = self.get_hostility_string()
         self.threat = self.level * self.race.threat
         self.attribute_points = self.threat
         self.name = self.set_monsters_name()
-        self.hostility_string = self.get_hostility_string()
 
         self.set_random_stats()
         self.current_hp = self.hp
+
+    def set_hostility(self):
+        random_number = randint(-20, 20)
+        hostility = self.race.hostility + random_number
+        return hostility
 
     def get_hostility_string(self):
         return hostility_dict[self.hostility]
@@ -44,7 +48,15 @@ class NPC_Monster(Entity):
             self.attribute_points -= 1
 
     def print_stats(self, more_stats=True):
-        print_and_pause(f'You see {self.name}, level {self.level}, attack type: {self.attack_type}')
+        print_and_pause(f'You see {self.name}, level {self.level}')
         if more_stats:
             print_and_pause('His stats are:')
             self.print_advanced_stats()
+
+    def attacks(self, characters_threat, char_bonuses=0):
+        chance = self.hostility + self.threat + k50() - characters_threat - char_bonuses
+        print(chance)
+        if chance > 70:
+            return True
+        elif chance < 70:
+            return False
