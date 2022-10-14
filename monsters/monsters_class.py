@@ -47,15 +47,12 @@ class NPC_Monster(Entity):
 
             self.attribute_points -= 1
 
-    def print_stats(self, more_stats=True):
+    def print_stats(self):
         print_and_pause(f'You see {self.name}, level {self.level}')
-        if more_stats:
-            print_and_pause('His stats are:')
-            self.print_advanced_stats()
+        print_and_pause(f'His strength is {self.strength}, agility: {self.agility}, cunning: {self.cunning}')
 
     def attacks(self, characters_threat, char_bonuses=0):
         chance = self.hostility + self.threat + k50() - characters_threat - char_bonuses
-        print(chance)
         if chance > 70:
             return True
         elif chance < 70:

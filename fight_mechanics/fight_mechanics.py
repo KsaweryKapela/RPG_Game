@@ -10,16 +10,15 @@ class Fight:
         self.npc = npc
         self.fight_on = True
         self.plot_device = CheckInput(self.player)
-        self.fight_commands = ['Attack', 'Surrender', 'Tame']
+        self.fight_commands = ['Attack', 'Surrender']
         self.fight_dict = {'Attack': self.player_attack,
-                           'Surrender': self.player_surrender,
-                           'Tame': self.tame}
+                           'Surrender': self.player_surrender}
         self.fight_outcome = None
 
-    def roll_for_initiative(self, player_bonus=0):
+    def roll_for_initiative(self, initiative_bonus=0):
         print_and_pause('*Roll for initiative*')
 
-        if self.player.initiative + k20() + player_bonus > self.npc.initiative + k20():
+        if self.player.initiative + k20() + initiative_bonus > self.npc.initiative + k20():
             print_and_pause(f'The {self.npc.name} did not react on time')
             self.player_turn('Attack')
 
@@ -51,8 +50,8 @@ class Fight:
         if self.fight_on:
             self.player_turn()
 
-    def fight(self):
-        self.roll_for_initiative()
+    def fight(self, initiative_bonus=0):
+        self.roll_for_initiative(initiative_bonus)
 
         if self.npc.current_hp <= 0:
             print_and_pause(f'You have defeated {self.npc.name}!!')
@@ -133,6 +132,3 @@ class Fight:
             return True
         else:
             return False
-
-    def tame(self):
-        print(f'WRITE IT LATER OR {self.npc.name} will hunt you!')

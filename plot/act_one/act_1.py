@@ -6,17 +6,13 @@ from plot.act_one.act_1_5 import ActOnePointFive
 
 
 class ActOne:
-    def __init__(self, character=create_character):
+    def __init__(self, character):
         self.character = character
         self.plot_device = CheckInput(self.character)
         self.actions = ['Look', 'Enter']
         self.act_1_5 = ActOnePointFive(self.character)
 
     def run(self):
-        clean_terminal()
-        print_text('plot/act_one/text_files/introduction.txt')
-        clean_terminal()
-        self.character = self.character()
         self.caves_outsides()
 
     def caves_outsides(self):
